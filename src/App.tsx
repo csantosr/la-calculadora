@@ -1019,7 +1019,7 @@ const calculateTable = (roster: Day[]): TablePosition[] => {
 }
 
 export default function App() {
-  const [rosterMain, setRosterMain] = useState(roster);
+  const [rosterMain, setRosterMain] = useState<Day[]>(JSON.parse(JSON.stringify(roster)));
   useEffect(() => console.log('rosterMain', rosterMain), [rosterMain])
   const tablePositions = useMemo(() => calculateTable(rosterMain), [rosterMain]);
 
@@ -1080,7 +1080,7 @@ export default function App() {
                       </Flex>
                     ))}
                   </SimpleGrid>
-                  <Button color='red' onClick={() => setRosterMain(roster)}>Limpiar</Button>
+                  <Button color='red' onClick={() => setRosterMain(JSON.parse(JSON.stringify(roster)))}>Limpiar</Button>
                 </Flex>
               </Tabs.Panel>
             ))}
